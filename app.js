@@ -1,6 +1,7 @@
 const express = require('express');
 const hbs = require('hbs');
 const path = require('path');
+const logger = require('morgan');
 const favicon = require('serve-favicon');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
@@ -17,6 +18,7 @@ app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partials');
 
 // middleware
+app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
